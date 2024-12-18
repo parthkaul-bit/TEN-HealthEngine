@@ -1,12 +1,33 @@
-import express from "express";
+import app from "./app.js";
+import dotenv from "dotenv";
+import connectDatabase from "./db.js";
+import cors from "cors";
 
-const app = express();
+// Middleware
+app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Health Engine API!");
+process.on("uncaughtException", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down server due to Uncaught Exception`);
+  process.exit(1);
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Config
+dotenv.config({ path: "config/config.env" });
+
+// Connecting to database
+connectDatabase();
+
+const port = process.env.PORT || 8080;
+
+const server = app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down server due to Unhandled Promise Rejection`);
+  server.close(() => {
+    process.exit(1);
+  });
 });
