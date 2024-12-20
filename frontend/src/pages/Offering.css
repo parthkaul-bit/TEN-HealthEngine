@@ -1,15 +1,17 @@
 /* offerings-section  */
-.offerings-section {
+.offerings-section {  
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 150px 40px;
+    padding: 0 40px;
     background: url(https://beta.dayzero.vercel.app/_next/static/media/offerings-bg.6a211e60.png);
     background-repeat: no-repeat;
     background-size: 125%;
     margin: auto 0;
+    padding-bottom: 5rem;
     gap: 32px;
+    background: linear-gradient(170deg,#023e8a,#0077b6);  
   }
   
   @media (max-width: 768px){
@@ -27,6 +29,7 @@
     font-weight: 600;
     line-height: 1;
     letter-spacing: -5px;
+    margin-top: 2rem;
   }
   
   h2{
@@ -48,10 +51,11 @@
   .offerings-section .offerings-card-container {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    margin: 20px;
-    background-color: #121212;
+    margin: 24px;
+    /* background-color: #121212; */
+    background-color: #012c64;
     border: 1px solid #393939;
-    padding: 20px 40px;
+    padding: 80px 40px;
     border-radius: 16px;
     gap: 40px 34px;
     box-shadow: 0 0 32px 0 rgba(181,199,220,.4);
@@ -62,4 +66,5 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
   }
